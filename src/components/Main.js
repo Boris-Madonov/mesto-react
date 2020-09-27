@@ -1,4 +1,5 @@
 import React from 'react';
+import PopupWithForm from './PopupWithForm';
 
 function Main() {
     const handleEditAvatarClick = () => {
@@ -70,11 +71,11 @@ function Main() {
                 </li>
             </template>
 
-            <section className="popup popup__edit-profile">
-                <form className="popup__container" name="edit-profile-form" action="#" method="GET" novalidate>
-                    <button className="popup__close-button" type="button"></button>
-                    <p className="popup__container-name">Редактировать профиль</p>
-                    <fieldset className="popup__container-form">
+            <PopupWithForm 
+                name="edit-profile" 
+                title="Редактировать профиль"
+                children={
+                    <>
                         <label className="popup__form-field">
                             <input className="popup__entry-field popup__entry-field_account-name" id="entry-field-account-name" type="text" name="name" placeholder="Введите имя" minlength="2" maxlength="40" required />
                             <span className="popup__entry-field-error" id="entry-field-account-name-error"></span>
@@ -83,30 +84,28 @@ function Main() {
                             <input className="popup__entry-field popup__entry-field_account-description" id="entry-field-account-description" type="text" name="about" placeholder="Введите описание" minlength="2" maxlength="200" required />
                             <span className="popup__entry-field-error" id="entry-field-account-description-error"></span>
                         </label>
-                        <button className="popup__submit-button" type="submit">Сохранить</button>
-                    </fieldset>
-                </form>
-            </section>
+                    </>
+                }
+            />
 
-            <section className="popup popup__update-avatar">
-                <form className="popup__container" name="update-avatar-form" action="#" method="GET" novalidate>
-                    <button className="popup__close-button" type="button"></button>
-                    <p className="popup__container-name">Обновить аватар</p>
-                    <fieldset className="popup__container-form">
+            <PopupWithForm 
+                name="update-avatar"
+                title="Обновить аватар"
+                children={
+                    <>
                         <label className="popup__form-field">
                             <input className="popup__entry-field popup__entry-field_avatar-image-url" id="entry-field-avatar-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
                             <span className="popup__entry-field-error" id="entry-field-avatar-image-url-error"></span>
                         </label>
-                        <button className="popup__submit-button" type="submit">Сохранить</button>
-                    </fieldset>
-                </form>
-            </section>
+                    </>
+                }
+            />
 
-            <section className="popup popup__new-item">
-                <form className="popup__container" name="new-item-form" action="#" method="GET" novalidate>
-                    <button className="popup__close-button" type="button"></button>
-                    <p className="popup__container-name">Новое место</p>
-                    <fieldset className="popup__container-form">
+            <PopupWithForm 
+                name="new-item"
+                title="Новое место"
+                children={
+                    <>
                         <label className="popup__form-field">
                             <input className="popup__entry-field popup__entry-field_item-name" id="entry-field-item-name" type="text" name="name" placeholder="Название" minlength="1" maxlength="30" required />
                             <span className="popup__entry-field-error" id="entry-field-item-name-error"></span>
@@ -115,20 +114,18 @@ function Main() {
                             <input className="popup__entry-field popup__entry-field_item-image-url" id="entry-field-item-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
                             <span className="popup__entry-field-error" id="entry-field-item-image-url-error"></span>
                         </label>
-                        <button className="popup__submit-button" type="submit">Создать</button>
-                    </fieldset>
-                </form>
-            </section>
+                    </>
+                }
+            />
 
-            <section className="popup popup__delete-item">
-                <form className="popup__container" name="delete-item-form" action="#" method="GET" novalidate>
-                    <button className="popup__close-button" type="button"></button>
-                    <p className="popup__container-name">Вы уверены?</p>
-                    <fieldset className="popup__container-form">
-                        <button className="popup__submit-button" type="submit">Да</button>
-                    </fieldset>
-                </form>
-            </section>
+            <PopupWithForm 
+                name="delete-item"
+                title="Вы уверены?"
+                children={
+                    <>
+                    </>
+                }
+            />
 
             <section className="popup popup__image">
                 <div className="popup__item">
