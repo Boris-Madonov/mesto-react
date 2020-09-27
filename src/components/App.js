@@ -33,6 +33,7 @@ function App() {
         <div className="page">
             <>
                 <Header />
+
                 <Main
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
@@ -95,6 +96,7 @@ function App() {
                 <ImagePopup
                     onClose={closeAllPopups}
                 />
+                
                 <Footer />
             </>
         </div>
