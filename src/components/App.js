@@ -48,8 +48,18 @@ function App() {
                     onClose={closeAllPopups}
                 >
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_avatar-image-url" id="entry-field-avatar-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
-                        <span className="popup__entry-field-error" id="entry-field-avatar-image-url-error"></span>
+                        <input
+                            className="popup__entry-field popup__entry-field_avatar-image-url"
+                            id="entry-field-avatar-image-url"
+                            type="url"
+                            name="link"
+                            placeholder="Ссылка на картинку"
+                            required
+                        />
+                        <span
+                            className="popup__entry-field-error"
+                            id="entry-field-avatar-image-url-error">
+                        </span>
                     </label>
                 </PopupWithForm>
 
@@ -61,12 +71,36 @@ function App() {
                     onClose={closeAllPopups}
                 >
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_account-name" id="entry-field-account-name" type="text" name="name" placeholder="Введите имя" minLength="2" maxLength="40" required />
-                        <span className="popup__entry-field-error" id="entry-field-account-name-error"></span>
+                        <input
+                            className="popup__entry-field popup__entry-field_account-name"
+                            id="entry-field-account-name"
+                            type="text"
+                            name="name"
+                            placeholder="Введите имя"
+                            minLength="2"
+                            maxLength="40"
+                            required
+                        />
+                        <span
+                            className="popup__entry-field-error"
+                            id="entry-field-account-name-error">
+                        </span>
                     </label>
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_account-description" id="entry-field-account-description" type="text" name="about" placeholder="Введите описание" minLength="2" maxLength="200" required />
-                        <span className="popup__entry-field-error" id="entry-field-account-description-error"></span>
+                        <input
+                            className="popup__entry-field popup__entry-field_account-description"
+                            id="entry-field-account-description"
+                            type="text"
+                            name="about"
+                            placeholder="Введите описание"
+                            minLength="2"
+                            maxLength="200"
+                            required
+                        />
+                        <span
+                            className="popup__entry-field-error"
+                            id="entry-field-account-description-error">
+                        </span>
                     </label>
                 </PopupWithForm>
 
@@ -78,12 +112,34 @@ function App() {
                     onClose={closeAllPopups}
                 >
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_item-name" id="entry-field-item-name" type="text" name="name" placeholder="Название" minLength="1" maxLength="30" required />
-                        <span className="popup__entry-field-error" id="entry-field-item-name-error"></span>
+                        <input
+                            className="popup__entry-field popup__entry-field_item-name"
+                            id="entry-field-item-name"
+                            type="text"
+                            name="name"
+                            placeholder="Название"
+                            minLength="1"
+                            maxLength="30"
+                            required
+                        />
+                        <span
+                            className="popup__entry-field-error"
+                            id="entry-field-item-name-error">
+                        </span>
                     </label>
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_item-image-url" id="entry-field-item-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
-                        <span className="popup__entry-field-error" id="entry-field-item-image-url-error"></span>
+                        <input
+                            className="popup__entry-field popup__entry-field_item-image-url"
+                            id="entry-field-item-image-url"
+                            type="url"
+                            name="link"
+                            placeholder="Ссылка на картинку"
+                            required
+                        />
+                        <span
+                            className="popup__entry-field-error"
+                            id="entry-field-item-image-url-error">
+                        </span>
                     </label>
                 </PopupWithForm>
 
@@ -96,7 +152,7 @@ function App() {
                 <ImagePopup
                     onClose={closeAllPopups}
                 />
-                
+
                 <Footer />
             </>
         </div>
