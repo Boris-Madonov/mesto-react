@@ -9,6 +9,7 @@ function App() {
     const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
     const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState(false);
 
     const handleEditAvatarClick = () => {
         setEditAvatarPopupOpen(true)
@@ -26,6 +27,7 @@ function App() {
         setEditAvatarPopupOpen(false);
         setEditProfilePopupOpen(false);
         setAddPlacePopupOpen(false);
+        setSelectedCard(false);
     };
 
 
@@ -38,6 +40,7 @@ function App() {
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
                     onAddPlace={handleAddPlaceClick}
+                    onCardClick={setSelectedCard}
                 />
 
                 <PopupWithForm 
@@ -150,6 +153,7 @@ function App() {
                 />
 
                 <ImagePopup
+                    card={selectedCard}
                     onClose={closeAllPopups}
                 />
 

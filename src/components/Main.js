@@ -16,6 +16,9 @@ function Main(props) {
                 setUserDescription(user.about);
                 setInitialCards(card);
             })
+            .catch((err) => {
+                console.log(err);
+            });
     }, []);
 
     return (
@@ -61,7 +64,13 @@ function Main(props) {
 
             <section className="elements">
                 <ul className="elements__list">
-                    {initialCards.map((card, i) => <Card key={i} {...card} />)}
+                    {initialCards.map((card) => (
+                        <Card 
+                            key={card._id} 
+                            card={card} 
+                            onCardClick={props.onCardClick}
+                        />
+                    ))}
                 </ul>
             </section>
 
