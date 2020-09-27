@@ -2,7 +2,7 @@ import React from 'react';
 
 function PopupWithForm(props) {
     return(
-        <section className={`popup popup__${props.name}`}>
+        <section className={`popup popup__${props.name} ${props.isOpen && 'popup_opened'}`}>
             <form 
                 className="popup__container" 
                 name={`${props.name}`} 
@@ -21,7 +21,7 @@ function PopupWithForm(props) {
                     <button 
                         className="popup__submit-button" 
                         type="submit"
-                    >Сохранить
+                    >{`${props.submit}`}
                     </button>
                 </fieldset>
             </form>

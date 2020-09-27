@@ -1,26 +1,6 @@
 import React from 'react';
-import PopupWithForm from './PopupWithForm';
-import ImagePopup from './ImagePopup';
 
-function Main() {
-    const handleEditAvatarClick = () => {
-        document
-        .querySelector('.popup__update-avatar')
-        .classList.add('popup_opened');
-    };
-
-    const handleEditProfileClick = () => {
-        document
-        .querySelector('.popup__edit-profile')
-        .classList.add('popup_opened');
-    };
-
-    const handleAddPlaceClick = () => {
-        document
-        .querySelector('.popup__new-item')
-        .classList.add('popup_opened');
-    };
-
+function Main(props) {
     return (
         <main className="content">
 
@@ -31,7 +11,7 @@ function Main() {
                         <button 
                             className="profile__avatar-edit" 
                             type="button"
-                            onClick={handleEditAvatarClick}
+                            onClick={props.onEditAvatar}
                         >
                         </button>
                     </div>
@@ -40,7 +20,7 @@ function Main() {
                         <button 
                             className="profile__text-edit" 
                             type="button"
-                            onClick={handleEditProfileClick}
+                            onClick={props.onEditProfile}
                         >
                         </button>
                         <p className="profile__text-description"></p>
@@ -49,7 +29,7 @@ function Main() {
                 <button 
                     className="profile__add-button" 
                     type="button"
-                    onClick={handleAddPlaceClick}
+                    onClick={props.onAddPlace}
                 >
                 </button>
             </section>
@@ -71,64 +51,6 @@ function Main() {
                     <button className="element__remove" type="button"></button>                    
                 </li>
             </template>
-
-            <PopupWithForm 
-                name="edit-profile" 
-                title="Редактировать профиль"
-                children={
-                    <>
-                        <label className="popup__form-field">
-                            <input className="popup__entry-field popup__entry-field_account-name" id="entry-field-account-name" type="text" name="name" placeholder="Введите имя" minlength="2" maxlength="40" required />
-                            <span className="popup__entry-field-error" id="entry-field-account-name-error"></span>
-                        </label>
-                        <label className="popup__form-field">
-                            <input className="popup__entry-field popup__entry-field_account-description" id="entry-field-account-description" type="text" name="about" placeholder="Введите описание" minlength="2" maxlength="200" required />
-                            <span className="popup__entry-field-error" id="entry-field-account-description-error"></span>
-                        </label>
-                    </>
-                }
-            />
-
-            <PopupWithForm 
-                name="update-avatar"
-                title="Обновить аватар"
-                children={
-                    <>
-                        <label className="popup__form-field">
-                            <input className="popup__entry-field popup__entry-field_avatar-image-url" id="entry-field-avatar-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
-                            <span className="popup__entry-field-error" id="entry-field-avatar-image-url-error"></span>
-                        </label>
-                    </>
-                }
-            />
-
-            <PopupWithForm 
-                name="new-item"
-                title="Новое место"
-                children={
-                    <>
-                        <label className="popup__form-field">
-                            <input className="popup__entry-field popup__entry-field_item-name" id="entry-field-item-name" type="text" name="name" placeholder="Название" minlength="1" maxlength="30" required />
-                            <span className="popup__entry-field-error" id="entry-field-item-name-error"></span>
-                        </label>
-                        <label className="popup__form-field">
-                            <input className="popup__entry-field popup__entry-field_item-image-url" id="entry-field-item-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
-                            <span className="popup__entry-field-error" id="entry-field-item-image-url-error"></span>
-                        </label>
-                    </>
-                }
-            />
-
-            <PopupWithForm 
-                name="delete-item"
-                title="Вы уверены?"
-                children={
-                    <>
-                    </>
-                }
-            />
-
-            <ImagePopup />
 
         </main>
     );
