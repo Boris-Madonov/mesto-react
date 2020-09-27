@@ -1,15 +1,7 @@
 import React from 'react';
-import './index.css';
-import header__logoPath from './images/logo/logo-white.svg';
 
-function App() {
-  return (
-    <div className="page">
-
-        <header className="header">
-            <img className="header__logo" src={header__logoPath} alt="логотип заголовка" />
-        </header>
-
+function Main() {
+    return (
         <main className="content">
 
             <section className="profile">
@@ -114,13 +106,7 @@ function App() {
             </section>
 
         </main>
-
-        <footer className="footer">
-            <p className="footer__text">&copy; 2020 Mesto Russia</p>
-        </footer>
-
-    </div>
-  );
+    );
 }
 
-export default App;
+export default Main
