@@ -1,6 +1,24 @@
 import React from 'react';
 
 function Main() {
+    const handleEditAvatarClick = () => {
+        document
+        .querySelector('.popup__update-avatar')
+        .classList.add('popup_opened');
+    };
+
+    const handleEditProfileClick = () => {
+        document
+        .querySelector('.popup__edit-profile')
+        .classList.add('popup_opened');
+    };
+
+    const handleAddPlaceClick = () => {
+        document
+        .querySelector('.popup__new-item')
+        .classList.add('popup_opened');
+    };
+
     return (
         <main className="content">
 
@@ -8,15 +26,30 @@ function Main() {
                 <div className="profile__info">
                     <div className="profile__avatar">
                         <img className="profile__avatar-image" src="#" alt="аватар профиля" />
-                        <button className="profile__avatar-edit" type="button"></button>
+                        <button 
+                            className="profile__avatar-edit" 
+                            type="button"
+                            onClick={handleEditAvatarClick}
+                        >
+                        </button>
                     </div>
                     <div className="profile__text">
                         <p className="profile__text-name"></p>
-                        <button className="profile__text-edit" type="button"></button>
+                        <button 
+                            className="profile__text-edit" 
+                            type="button"
+                            onClick={handleEditProfileClick}
+                        >
+                        </button>
                         <p className="profile__text-description"></p>
                     </div>
                 </div>
-                <button className="profile__add-button" type="button"></button>
+                <button 
+                    className="profile__add-button" 
+                    type="button"
+                    onClick={handleAddPlaceClick}
+                >
+                </button>
             </section>
 
             <section className="elements">
