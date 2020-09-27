@@ -8,11 +8,12 @@ function PopupWithForm(props) {
                 name={`${props.name}`} 
                 action="#" 
                 method="GET" 
-                novalidate
+                noValidate
             >
                 <button 
                     className="popup__close-button" 
                     type="button"
+                    onClick={props.onClose}
                 >
                 </button>
                 <p className="popup__container-name">{`${props.title}`}</p>

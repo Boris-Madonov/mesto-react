@@ -22,6 +22,12 @@ function App() {
         setAddPlacePopupOpen(true)
     };
 
+    const closeAllPopups = () => {
+        setEditAvatarPopupOpen(false);
+        setEditProfilePopupOpen(false);
+        setAddPlacePopupOpen(false);
+    };
+
 
     return (
         <div className="page">
@@ -38,6 +44,7 @@ function App() {
                     title="Обновить аватар"
                     submit="Сохранить"
                     isOpen={isEditAvatarPopupOpen}
+                    onClose={closeAllPopups}
                 >
                     <label className="popup__form-field">
                         <input className="popup__entry-field popup__entry-field_avatar-image-url" id="entry-field-avatar-image-url" type="url" name="link" placeholder="Ссылка на картинку" required />
@@ -50,13 +57,14 @@ function App() {
                     title="Редактировать профиль"
                     submit="Сохранить"
                     isOpen={isEditProfilePopupOpen}
+                    onClose={closeAllPopups}
                 >
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_account-name" id="entry-field-account-name" type="text" name="name" placeholder="Введите имя" minlength="2" maxlength="40" required />
+                        <input className="popup__entry-field popup__entry-field_account-name" id="entry-field-account-name" type="text" name="name" placeholder="Введите имя" minLength="2" maxLength="40" required />
                         <span className="popup__entry-field-error" id="entry-field-account-name-error"></span>
                     </label>
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_account-description" id="entry-field-account-description" type="text" name="about" placeholder="Введите описание" minlength="2" maxlength="200" required />
+                        <input className="popup__entry-field popup__entry-field_account-description" id="entry-field-account-description" type="text" name="about" placeholder="Введите описание" minLength="2" maxLength="200" required />
                         <span className="popup__entry-field-error" id="entry-field-account-description-error"></span>
                     </label>
                 </PopupWithForm>
@@ -66,9 +74,10 @@ function App() {
                     title="Новое место"
                     submit="Создать"
                     isOpen={isAddPlacePopupOpen}
+                    onClose={closeAllPopups}
                 >
                     <label className="popup__form-field">
-                        <input className="popup__entry-field popup__entry-field_item-name" id="entry-field-item-name" type="text" name="name" placeholder="Название" minlength="1" maxlength="30" required />
+                        <input className="popup__entry-field popup__entry-field_item-name" id="entry-field-item-name" type="text" name="name" placeholder="Название" minLength="1" maxLength="30" required />
                         <span className="popup__entry-field-error" id="entry-field-item-name-error"></span>
                     </label>
                     <label className="popup__form-field">
@@ -80,9 +89,12 @@ function App() {
                 <PopupWithForm 
                     name="delete-item"
                     title="Вы уверены?"
+                    onClose={closeAllPopups}
                 />
 
-                <ImagePopup />
+                <ImagePopup
+                    onClose={closeAllPopups}
+                />
                 <Footer />
             </>
         </div>
