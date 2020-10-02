@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
 import Footer from './Footer';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -12,7 +13,6 @@ function App() {
     const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
     const [selectedCard, setSelectedCard] = React.useState(false);
-
     const [currentUser, setCurrentUser] = React.useState('');
 
     React.useEffect(() => {
@@ -43,6 +43,17 @@ function App() {
         setEditProfilePopupOpen(false);
         setAddPlacePopupOpen(false);
         setSelectedCard(false);
+    };
+
+    const handleUpdateUser = (newUserInfo) => {
+        api.sendUserInfo(newUserInfo)
+        .then((user) => {
+            setCurrentUser(user);
+            closeAllPopups();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
     };
 
 
@@ -82,46 +93,11 @@ function App() {
                         </label>
                     </PopupWithForm>
 
-                    <PopupWithForm 
-                        name="edit-profile" 
-                        title="Редактировать профиль"
-                        submit="Сохранить"
+                    <EditProfilePopup
                         isOpen={isEditProfilePopupOpen}
                         onClose={closeAllPopups}
-                    >
-                        <label className="popup__form-field">
-                            <input
-                                className="popup__entry-field popup__entry-field_account-name"
-                                id="entry-field-account-name"
-                                type="text"
-                                name="name"
-                                placeholder="Введите имя"
-                                minLength="2"
-                                maxLength="40"
-                                required
-                            />
-                            <span
-                                className="popup__entry-field-error"
-                                id="entry-field-account-name-error">
-                            </span>
-                        </label>
-                        <label className="popup__form-field">
-                            <input
-                                className="popup__entry-field popup__entry-field_account-description"
-                                id="entry-field-account-description"
-                                type="text"
-                                name="about"
-                                placeholder="Введите описание"
-                                minLength="2"
-                                maxLength="200"
-                                required
-                            />
-                            <span
-                                className="popup__entry-field-error"
-                                id="entry-field-account-description-error">
-                            </span>
-                        </label>
-                    </PopupWithForm>
+                        onUpdateUser={handleUpdateUser}
+                    />
 
                     <PopupWithForm 
                         name="new-item"

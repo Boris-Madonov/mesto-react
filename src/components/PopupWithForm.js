@@ -7,7 +7,8 @@ function PopupWithForm(props) {
                 className="popup__container" 
                 name={`${props.name}`} 
                 action="#" 
-                method="GET" 
+                method="GET"
+                onSubmit={props.onSubmit}
                 noValidate
             >
                 <button 
