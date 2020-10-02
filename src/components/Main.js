@@ -1,25 +1,51 @@
 import React from 'react';
 import api from '../utils/api';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
-    const [userAvatar, setUserAvatar] = React.useState('');
-    const [userName, setUserName] = React.useState('');
-    const [userDescription, setUserDescription] = React.useState('');
-    const [initialCards, setInitialCards] = React.useState([]);
+    const user = React.useContext(CurrentUserContext);
+    const [cards, setCards] = React.useState([]);
 
     React.useEffect(() => {
-        Promise.all([api.getUserInfo(), api.getInitialCards()])
-            .then(([user, card]) => {
-                setUserAvatar(user.avatar);
-                setUserName(user.name);
-                setUserDescription(user.about);
-                setInitialCards(card);
+        Promise.resolve(api.getInitialCards())
+            .then((card) => {
+                setCards(card);
+                console.log(card);
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
+
+    const handleCardLike = (card) => {
+        const isLiked = card.likes.some(i => i._id === user._id);
+        
+        const changeLike = () => {
+            if(!isLiked) {
+                api.likeCard(card._id).then((newCard) => {
+                    const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+                    setCards(newCards);
+                });
+            } else {
+                api.deleteLikeCard(card._id).then((newCard) => {
+                    const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+                    setCards(newCards);
+                });
+            }
+        }
+
+        changeLike();
+    };
+
+    const handleCardDelete = (card) => {
+        const isOwn = card.owner._id === user._id;
+
+        api.deleteLikeCard(card._id, isOwn).then((newCard) => {
+            const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+            setCards(newCards);
+        });
+    }
 
     return (
         <main className="content">
@@ -29,7 +55,7 @@ function Main(props) {
                     <div className="profile__avatar">
                         <img 
                             className="profile__avatar-image"
-                            src={userAvatar}
+                            src={user.avatar}
                             alt="аватар профиля"
                         />
                         <button 
@@ -41,7 +67,7 @@ function Main(props) {
                     </div>
                     <div className="profile__text">
                         <p className="profile__text-name">
-                            {userName}
+                            {user.name}
                         </p>
                         <button 
                             className="profile__text-edit" 
@@ -50,7 +76,7 @@ function Main(props) {
                         >
                         </button>
                         <p className="profile__text-description">
-                            {userDescription}
+                            {user.about}
                         </p>
                     </div>
                 </div>
@@ -64,11 +90,13 @@ function Main(props) {
 
             <section className="elements">
                 <ul className="elements__list">
-                    {initialCards.map((card) => (
+                    {cards.map((card) => (
                         <Card 
                             key={card._id} 
                             card={card} 
                             onCardClick={props.onCardClick}
+                            onCardLike={handleCardLike}
+                            onCardDelete={handleCardDelete}
                         />
                     ))}
                 </ul>
