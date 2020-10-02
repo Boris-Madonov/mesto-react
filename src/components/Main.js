@@ -11,7 +11,6 @@ function Main(props) {
         Promise.resolve(api.getInitialCards())
             .then((card) => {
                 setCards(card);
-                console.log(card);
             })
             .catch((err) => {
                 console.log(err);
@@ -47,7 +46,7 @@ function Main(props) {
         });
     }
 
-    return (
+    return(
         <main className="content">
 
             <section className="profile">
