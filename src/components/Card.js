@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
@@ -14,14 +15,10 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     };
 
     const isOwn = card.owner._id === user._id;
-    const cardDeleteButtonClassName = (
-        `element__remove ${isOwn ? '' : 'element__remove_hidden'}`
-    );
+    const cardDeleteButtonClassName = classNames('element__remove', { 'element__remove_hidden': !isOwn });
 
     const isLiked = card.likes.some(i => i._id === user._id);
-    const cardLikeButtonClassName = (
-        `element__like ${isLiked ? 'element__like_liked' : ''}`
-    );
+    const cardLikeButtonClassName = classNames('element__like', { 'element__like_liked': isLiked });
 
     return(
         <li className="element">

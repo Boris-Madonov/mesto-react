@@ -2,7 +2,7 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function EditAvatarPopup(props) {
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
     const user = React.useContext(CurrentUserContext);
     const [avatar, setAvatar] = React.useState('')
     const linkRef = React.useRef();
@@ -16,7 +16,7 @@ function EditAvatarPopup(props) {
 
         const newAvatarLink = linkRef.current.value;
 
-        props.onUpdateAvatar({
+        onUpdateAvatar({
             link: newAvatarLink
         });
     };
@@ -26,8 +26,8 @@ function EditAvatarPopup(props) {
             name="update-avatar"
             title="Обновить аватар"
             submit="Сохранить"
-            isOpen={props.isOpen}
-            onClose={props.onClose}
+            isOpen={isOpen}
+            onClose={onClose}
             onSubmit={handleSubmit}
         >
             <label className="popup__form-field">
